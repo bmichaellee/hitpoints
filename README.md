@@ -4,7 +4,7 @@ HitPoints aims to be a food-tracker, video game style.
 # Setting up the dev environment
 
 **Important!**
-Clone this repo by using `git clone --recurse-submodules --remote-submodules` to get
+Clone this repo by using `git clone https://github.com/bmichaellee/hitpoints.git --recurse-submodules --remote-submodules` to get
 all of the submodules along with the main repo.
 
 **Backend with Docker/VSCode**:
