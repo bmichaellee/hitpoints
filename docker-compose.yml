@@ -41,3 +41,12 @@ services:
       dockerfile: Dockerfile
     ports:
       - 80:80
+
+  hitpoints-ui-react:
+    depends_on:
+      - hitpoints-api-express
+    build:
+      context: ./hitpoints-ui-react
+      dockerfile: Dockerfile
+    ports:
+      - 80:80
