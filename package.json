@@ -4,10 +4,15 @@
   "description": "Hitpoints",
   "scripts": {
     "start": "npm run start:react-native",
-    "start:vue": "docker compose down && docker compose build --no-cache && docker compose up hitpoints-ui-vue -d",
-    "start:react": "docker compose down && docker compose build --no-cache && docker compose up hitpoints-ui-react -d",
-    "start:react-native": "docker compose down && docker compose build --no-cache && docker compose up hitpoints-api-express -d && npm --prefix ./hitpoints-ui-react-native run start",
-    "start:mongo-express": "docker compose up mongo-express -d"
+    "start:vue": "npm run install:vue && npm run docker && docker compose up hitpoints-ui-vue -d && npm --prefix ./hitpoints-ui-react-vue run start",
+    "start:react": "npm run install:react && npm run docker && docker compose up hitpoints-ui-react -d && npm --prefix ./hitpoints-ui-react run start",
+    "start:react-native": "npm run install:react-native && npm run docker && docker compose up hitpoints-api-express -d && npm --prefix ./hitpoints-ui-react-native run start",
+    "start:mongo-express": "docker compose up mongo-express -d",
+    "docker": "docker compose down && docker compose build --no-cache",
+    "install": "npm run install:vue && npm run install:react && npm run install:react-native",
+    "install:vue": "npm --prefix ./hitpoints-ui-vue install",
+    "install:react": "npm --prefix ./hitpoints-ui-react install",
+    "install:react-native": "npm --prefix ./hitpoints-ui-react-native install"
   },
   "author": "Michael Lee <bmichaellee@outlook.com>",
   "license": "UNLICENSED"
