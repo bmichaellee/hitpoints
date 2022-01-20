@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "Hitpoints",
   "scripts": {
+    "start": "npm run start:react-native",
     "start:vue": "docker compose down && docker compose build --no-cache && docker compose up hitpoints-ui-vue -d",
     "start:react": "docker compose down && docker compose build --no-cache && docker compose up hitpoints-ui-react -d",
     "start:react-native": "docker compose down && docker compose build --no-cache && docker compose up hitpoints-api-express -d && npm --prefix ./hitpoints-ui-react-native run start",
