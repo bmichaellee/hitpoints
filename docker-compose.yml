@@ -1,0 +1,43 @@
+version: "3.9"
+services:
+  mongo:
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: example
+      ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/
+
+  hitpoints-api-express:
+    depends_on:
+      - mongo
+    build:
+      context: ./hitpoints-api-express
+      dockerfile: Dockerfile
+    volumes:
+      - .:/hitpoints-api-express
+    ports:
+      - 8080:8080
+    environment:
+      - PORT=8080
+      - HOST=0.0.0.0
+
+  hitpoints-ui-vue:
+    depends_on:
+      - hitpoints-api-express
+    build:
+      context: ./hitpoints-ui-vue
+      dockerfile: Dockerfile
+    ports:
+      - 80:80

@@ -1,0 +1,11 @@
+{
+  "name": "hitpoints",
+  "version": "0.1.0",
+  "description": "Hitpoints",
+  "scripts": {
+    "start:vue": "docker compose build --no-cache && docker compose up hitpoints-ui-vue -d",
+    "start:react": "docker compose build --no-cache && docker compose up hitpoints-ui-react -d"
+  },
+  "author": "Michael Lee <bmichaellee@outlook.com>",
+  "license": "UNLICENSED"
+}
