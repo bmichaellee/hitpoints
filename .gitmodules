@@ -17,3 +17,8 @@
 	path = hitpoints-ui-react-native
 	url = https://github.com/bmichaellee/hitpoints-ui-react-native.git
 	ignore = dirty
+
+[submodule "hitpoints-db-mongo"]
+	path = hitpoints-db-mongo
+	url = https://github.com/bmichaellee/hitpoints-db-mongo.git
+	ignore = dirty

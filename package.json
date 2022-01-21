@@ -2,6 +2,17 @@
   "name": "hitpoints",
   "version": "0.1.0",
   "description": "HitPoints aims to be a food-tracker, video game style.",
+  "scripts": {
+    "test": "echo $NPM_CONFIG_TEST",
+    "start": "npm run start:react-native",
+    "start:vue": "npm run docker && docker compose up ui-vue -d",
+    "start:react": "npm run docker && docker compose up ui-react -d",
+    "start:react-native": "npm run docker && docker compose up api-express -d",
+    "start:mongo-express": "docker compose up mongo-express -d",
+    "docker": "docker compose down && docker compose build --no-cache",
+    "db:dump": "docker exec -i hitpoints-mongo-1 sh mongodump.sh",
+    "db:restore": "docker exec -i hitpoints-mongo-1 sh mongorestore.sh"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bmichaellee/hitpoints.git"

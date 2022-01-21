@@ -4,49 +4,56 @@ services:
     image: mongo
     restart: always
     ports:
-      - 27017:27017
+      - ${PORT_MONGO:-27017}:${PORT_MONGO:-27017}
+    volumes:
+      - ${CONTEXT_MONGO:-./hitpoints-db-mongo}/mongorestore.sh:/docker-entrypoint-initdb.d/mongorestore.sh
+      - ${CONTEXT_MONGO:-./hitpoints-db-mongo}/dump:/dump
+      - ${CONTEXT_MONGO:-./hitpoints-db-mongo}/mongorestore.sh:/mongorestore.sh
+      - ${CONTEXT_MONGO:-./hitpoints-db-mongo}/mongodump.sh:/mongodump.sh
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_ROOT_USERNAME: ${DB_USER:-root}
+      MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWORD:-example}
 
   mongo-express:
+    depends_on:
+      - mongo
     image: mongo-express
     restart: always
     ports:
-      - 8081:8081
+      - ${PORT_MONGO_EXPRESS:-8081}:${PORT_MONGO_EXPRESS:-8081}
     environment:
-      ME_CONFIG_MONGODB_ADMINUSERNAME: root
-      ME_CONFIG_MONGODB_ADMINPASSWORD: example
-      ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/
+      ME_CONFIG_MONGODB_ADMINUSERNAME: ${DB_USER:-root}
+      ME_CONFIG_MONGODB_ADMINPASSWORD: ${DB_PASSWORD:-example}
+      ME_CONFIG_MONGODB_URL: mongodb://${DB_USER:-root}:${DB_PASSWORD:-example}@mongo:27017/
 
-  hitpoints-api-express:
+  api-express:
     depends_on:
       - mongo
     build:
-      context: ./hitpoints-api-express
+      context: ${CONTEXT_EXPRESS:-./hitpoints-api-express}
       dockerfile: Dockerfile
     volumes:
-      - .:/hitpoints-api-express
+      - .:/api-express
     ports:
-      - 8080:8080
+      - ${PORT_EXPRESS:-8080}:${PORT_EXPRESS:-8080}
     environment:
-      - PORT=8080
-      - HOST=0.0.0.0
+      - PORT=${PORT_EXPRESS:-8080}
+      - HOST=${HOST_EXPRESS:-0.0.0.0}
 
-  hitpoints-ui-vue:
+  ui-vue:
     depends_on:
-      - hitpoints-api-express
+      - api-express
     build:
-      context: ./hitpoints-ui-vue
+      context: ${CONTEXT_VUE:-./hitpoints-ui-vue}
       dockerfile: Dockerfile
     ports:
-      - 80:80
+      - ${PORT_VUE:-80}:${PORT_VUE:-80}
 
-  hitpoints-ui-react:
+  ui-react:
     depends_on:
-      - hitpoints-api-express
+      - api-express
     build:
-      context: ./hitpoints-ui-react
+      context: ${CONTEXT_REACT:-./hitpoints-ui-react}
       dockerfile: Dockerfile
     ports:
-      - 80:80
+      - ${PORT_REACT:-80}:${PORT_REACT:-80}
