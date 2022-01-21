@@ -3,5 +3,6 @@ build
 dist
 
 *.env*
+*.diff
 
 npm-debug.log*
