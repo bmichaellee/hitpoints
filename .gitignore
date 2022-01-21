@@ -6,6 +6,5 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# This main project is not meant to be installed, so we don't need package/package-lock.json.
-/package.json
+# This main project is not meant to be installed, so we don't need package-lock.json.
 /package-lock.json

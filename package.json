@@ -1,0 +1,15 @@
+{
+  "name": "hitpoints",
+  "version": "0.1.0",
+  "description": "HitPoints aims to be a food-tracker, video game style.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bmichaellee/hitpoints.git"
+  },
+  "author": "Michael Lee <bmichaellee@outlook.com>",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/bmichaellee/hitpoints/issues"
+  },
+  "homepage": "https://github.com/bmichaellee/hitpoints#readme"
+}
