@@ -1,15 +1,19 @@
 [submodule "hitpoints-api-express"]
 	path = hitpoints-api-express
 	url = https://github.com/bmichaellee/hitpoints-api-express.git
+	ignore = dirty
 
 [submodule "hitpoints-ui-vue"]
 	path = hitpoints-ui-vue
 	url = https://github.com/bmichaellee/hitpoints-ui-vue.git
+	ignore = dirty
 
 [submodule "hitpoints-ui-react"]
 	path = hitpoints-ui-react
 	url = https://github.com/bmichaellee/hitpoints-ui-react.git
+	ignore = dirty
 	
 [submodule "hitpoints-ui-react-native"]
 	path = hitpoints-ui-react-native
 	url = https://github.com/bmichaellee/hitpoints-ui-react-native.git
+	ignore = dirty
