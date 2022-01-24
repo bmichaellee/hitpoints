@@ -24,7 +24,7 @@ services:
     environment:
       ME_CONFIG_MONGODB_ADMINUSERNAME: ${DB_USER:-root}
       ME_CONFIG_MONGODB_ADMINPASSWORD: ${DB_PASSWORD:-example}
-      ME_CONFIG_MONGODB_URL: mongodb://${DB_USER:-root}:${DB_PASSWORD:-example}@mongo:27017/
+      ME_CONFIG_MONGODB_URL: mongodb://${DB_USER:-root}:${DB_PASSWORD:-example}@mongo:${DB_PORT-:27017}/
 
   api-express:
     depends_on:
@@ -39,6 +39,7 @@ services:
     environment:
       - PORT=${PORT_EXPRESS:-8080}
       - HOST=${HOST_EXPRESS:-0.0.0.0}
+      - DB_URL = mongodb://${DB_USER:-root}:${DB_PASSWORD:-example}@${DB_HOST-:mongo}:${DB_PORT-:27017}/
 
   ui-vue:
     depends_on:
