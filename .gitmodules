@@ -22,3 +22,8 @@
 	path = hitpoints-db-mongo
 	url = https://github.com/bmichaellee/hitpoints-db-mongo.git
 	ignore = dirty
+
+[submodule "hitpoints-api-client"]
+	path = hitpoints-api-client
+	url = https://github.com/bmichaellee/hitpoints-api-client.git
+	ignore = dirty
