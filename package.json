@@ -11,7 +11,7 @@
     "install:react-native": "cd hitpoints-ui-react-native && npm i",
     "install:vue": "cd hitpoints-ui-vue && npm i",
     "install:express": "cd hitpoints-api-express && npm i",
-    "start": "npm run start:docker && npm run start:backend && npm run start:client && npm run start:frontend",
+    "start": "npm run start:docker && npm run start:backend && npm run start:frontend",
     "start:frontend": "npm run start:react && npm run start:vue && npm run start:react-native",
     "start:backend": "npm run start:express",
     "start:react": "start npm start --prefix hitpoints-ui-react",
